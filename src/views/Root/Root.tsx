@@ -76,10 +76,10 @@ const MovieInfo = styled.div`
 
   p {
     height: 5rem;
-    font-size: ${({ theme }) => theme.fontSize.s};
+    font-size: 1rem;
     width: 85%;
     transform: translateY(-17.5%);
-    color: ;
+    margin-bottom: 2rem;
   }
 `;
 
