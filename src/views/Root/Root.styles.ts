@@ -8,3 +8,10 @@ export const Wrapper = styled.div`
   width: 100vw;
   height: 100vh;
 `;
+
+export const Heading = styled.h1`
+  &::after {
+    content: ' movie!';
+    color: ${({ theme }) => theme.colors.red};
+  }
+`;
