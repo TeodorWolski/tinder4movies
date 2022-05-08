@@ -8,9 +8,7 @@ const Home = () => {
     <MainTemplate>
       <Wrapper>
         <Heading>Select your favourite</Heading>
-        {data.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
+        <MovieCard key={data[0].id} movie={data[0]} />
       </Wrapper>
     </MainTemplate>
   );
