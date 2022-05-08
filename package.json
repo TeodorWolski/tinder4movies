@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.0.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.4.1",
+    "msw": "^0.39.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router": "^6.3.0",
@@ -60,5 +61,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
     "prettier": "^2.6.2"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
