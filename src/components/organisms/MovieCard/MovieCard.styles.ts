@@ -62,6 +62,12 @@ export const MovieInfo = styled.div`
     align-items: center;
     justify-content: space-around;
     transform: translateY(15%);
+    width: 90%;
+
+    h1 {
+      width: 100%;
+      text-align: left;
+    }
   }
 
   p {
@@ -70,13 +76,15 @@ export const MovieInfo = styled.div`
     width: 85%;
     transform: translateY(-17.5%);
     margin-bottom: 2rem;
+    height: 60%;
+    width: 90%;
   }
 `;
 
 export const FilmwebLink = styled.a<{ icon: string }>`
   margin-left: 2rem;
-  height: 2.75rem;
-  width: 2.75rem;
+  height: 3.5rem;
+  width: 3.5rem;
   background-image: url(${({ icon }) => icon});
   background-repeat: no-repeat;
   background-color: transparent;

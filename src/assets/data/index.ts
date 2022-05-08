@@ -61,7 +61,7 @@ export const data = [
     name: 'Kiler',
     rating: 7.7,
     description:
-      'Jerzy Kiler, warszawski taksówkarz, przypadkowo zostaje wzięty za płatnego zabójcę i umieszczony w areszcie. Wyciąga go stamtąd boss świata przestępczego, który oferuje mu nowe zadanie.',
+      'Jerzy Kiler, warszawski taksówkarz, przypadkowo zostaje wzięty za płatnego zabójcę i umieszczony w areszcie.',
     image: 'https://fwcdn.pl/fpo/05/29/529/6900785.3.jpg',
     url: 'https://www.filmweb.pl/film/Kiler-1997-529',
   },

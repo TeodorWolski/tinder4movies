@@ -8,7 +8,7 @@ const Home = () => {
     <MainTemplate>
       <Wrapper>
         <Heading>Select your favourite</Heading>
-        <MovieCard key={data[0].id} movie={data[0]} />
+        <MovieCard key={data[0].id} movie={data[6]} />
       </Wrapper>
     </MainTemplate>
   );
