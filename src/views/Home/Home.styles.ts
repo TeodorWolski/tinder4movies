@@ -15,3 +15,11 @@ export const Heading = styled.h1`
     color: ${({ theme }) => theme.colors.red};
   }
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  width: 75%;
+  margin-top: 10%;
+  align-items: center;
+  justify-content: space-around;
+`;
