@@ -4,7 +4,6 @@ import Button from 'components/atoms/Button/Button';
 import { Wrapper, Heading, ButtonWrapper } from './Movie.styles';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import { useParams } from 'react-router-dom';
-import { recommendations as r } from 'mocks/data';
 import { MovieProps } from 'types';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
 
@@ -14,16 +13,26 @@ const Movie = () => {
 
   useEffect(() => {
     axios
-      .get(`/recommendations/1`)
-      .then(({ data }) => console.log(data))
+      .get(`/recommendations/${id}`)
+      .then(({ data }) => setMovie(data.matchingRecommendation))
       .catch((error) => console.error(error));
   }, [id]);
-  console.log(r);
+
   return (
     <MainTemplate>
       <Wrapper>
         <Heading>Select your favourite</Heading>
-        {/* <MovieCard movie={recommendations[0]} key="1" /> */}
+        {movie.map(({ id, rating, name, image, url, description }) => (
+          <MovieCard
+            key={id}
+            rating={rating}
+            name={name}
+            image={image}
+            description={description}
+            url={url}
+            id={id}
+          />
+        ))}
         <ButtonWrapper>
           <Button />
           <Button isDecline />

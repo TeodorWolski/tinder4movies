@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 export const recommendations = [
   {
-    id: uuidv4(),
+    id: '12345',
     name: 'Gran torino',
     rating: 8.2,
     description:
