@@ -10,7 +10,7 @@ import { MovieProps } from 'types';
 
 const MovieCard: React.FC<MovieProps> = ({ movie }) => {
   return (
-    <CardWrapper>
+    <CardWrapper key={movie.id}>
       <RatingSection>
         <img src={StarIcon} alt="starIcon" />
         <p>{movie.rating}</p>
