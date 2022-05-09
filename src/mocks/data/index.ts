@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-export const data = [
+export const recommendations = [
   {
     id: uuidv4(),
     name: 'Gran torino',
