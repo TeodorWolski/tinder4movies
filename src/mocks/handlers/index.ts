@@ -3,10 +3,10 @@ import { recommendations } from 'mocks/data';
 import { MovieProps } from 'types';
 
 export const handlers = [
-  rest.get('/recommendations/:id', (req, res, ctx) => {
+  rest.get<MovieProps>('/recommendations/:id', (req, res, ctx) => {
     if (req.params.id) {
       const matchingRecommendation = recommendations.filter(
-        (recommendation) => recommendation.id === req.params.id
+        (recommendation: MovieProps) => recommendation.id === req.params.id
       );
       return res(ctx.status(200), ctx.json({ matchingRecommendation }));
     }

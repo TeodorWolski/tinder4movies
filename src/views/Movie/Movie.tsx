@@ -4,7 +4,6 @@ import Button from 'components/atoms/Button/Button';
 import { Wrapper, Heading, ButtonWrapper } from './Movie.styles';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import { useParams } from 'react-router-dom';
-import { MovieProps } from 'types';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
 
 const Movie = () => {
