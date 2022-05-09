@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
+import { Wrapper, Heading, ButtonWrapper } from './Movie.styles';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
-import { Wrapper, Heading, ButtonWrapper } from './Movie.styles';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import { useParams } from 'react-router-dom';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
 
 const Movie = () => {

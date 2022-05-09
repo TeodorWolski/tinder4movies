@@ -17,6 +17,7 @@ export const Heading = styled.h1`
 `;
 
 export const ButtonWrapper = styled.div`
+  max-width: 45rem;
   display: flex;
   width: 75%;
   margin-top: 10%;
