@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Heading, ButtonWrapper } from './Movie.styles';
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
-
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
-import { useNavigate } from 'react-router-dom';
 
-interface Movie {
+interface Recommendation {
   id: string;
   name: string;
   rating: number;
@@ -19,12 +18,9 @@ interface Movie {
 
 const Movie = () => {
   const navigate = useNavigate();
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Recommendation[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentMovie = movies[currentIndex];
-  {
-    console.log(movies.length);
-  }
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
@@ -66,6 +62,7 @@ const Movie = () => {
       notify(false);
       axios.put(`/recommendations/${currentMovie.id}/reject`, currentMovie);
     }
+    currentIndex === 6 && navigate('/end');
   };
 
   return (
