@@ -1,6 +1,5 @@
 import { rest } from 'msw';
 import { recommendations } from 'mocks/data';
-import { MovieProps } from 'types';
 
 export const handlers = [
   rest.get('/recommendations', (req, res, ctx) => {
@@ -13,6 +12,15 @@ export const handlers = [
         (recommendation) => recommendation.id === req.params.id
       );
       return res(ctx.status(200), ctx.json({ rejectedRecommendation }));
+    }
+  }),
+
+  rest.put('/recommendations/:id/accept', (req, res, ctx) => {
+    if (req.params.id) {
+      const acceptedRecommendation = recommendations.filter(
+        (recommendation) => recommendation.id === req.params.id
+      );
+      return res(ctx.status(200), ctx.json({ acceptedRecommendation }));
     }
   }),
 ];

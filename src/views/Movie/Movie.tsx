@@ -6,7 +6,6 @@ import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
-import { MovieProps } from 'types';
 
 interface Movie {
   id: string;
@@ -24,7 +23,7 @@ const Movie = () => {
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
-      toast.success('Przyjęto rekomendację', {
+      toast.success(`Już wiemy, że lubisz film ${currentMovie.name}`, {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,
@@ -34,7 +33,7 @@ const Movie = () => {
         progress: undefined,
       });
     } else {
-      toast.error('Odrzucono rekomendację!', {
+      toast.error(`Odrzucono rekomendację filmu ${currentMovie.name}!`, {
         position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
@@ -57,7 +56,7 @@ const Movie = () => {
     setCurrentIndex(currentIndex + 1);
     if (isAccepted) {
       notify(true);
-      console.log('wyslano do bazy danych');
+      axios.put(`/recommendations/${currentMovie.id}/accept`, currentMovie);
     } else {
       notify(false);
       axios.put(`/recommendations/${currentMovie.id}/reject`, currentMovie);
