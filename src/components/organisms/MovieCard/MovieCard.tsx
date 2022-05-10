@@ -15,7 +15,7 @@ const MovieCard: React.FC<MovieProps> = ({ movie }) => {
         <img src={StarIcon} alt="starIcon" />
         <p>{movie.rating}</p>
       </RatingSection>
-      <img src={movie.image} alt={`${movie.name} photo`} />
+      <img src={movie.image} alt="movie" />
       <MovieInfo>
         <div>
           <h1>{movie.name}</h1>

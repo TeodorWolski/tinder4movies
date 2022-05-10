@@ -1,13 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-
+import { Heading, Button, Wrapper } from './End.styles';
 const End = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h1>end</h1>
-      <button onClick={() => navigate('/')}>Wróć na początek</button>
-    </div>
+    <Wrapper>
+      <Heading>Wszystkie filmy zostały przejrzane!</Heading>
+      <Button onClick={() => navigate('/')}>Wróć na początek</Button>
+    </Wrapper>
   );
 };
 
