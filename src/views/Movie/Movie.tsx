@@ -10,22 +10,48 @@ import MovieCard from 'components/organisms/MovieCard/MovieCard';
 const Movie = () => {
   const [movies, setMovies] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const notify = () =>
-    toast.error('🦄 Wow so easy!', {
-      position: 'bottom-left',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+
+  const notify = (isAccepted?: boolean) => {
+    if (isAccepted) {
+      toast.success('Przyjęto rekomendację', {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    } else {
+      toast.error('Odrzucono rekomendację!', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   useEffect(() => {
     axios
       .get(`/recommendations`)
       .then(({ data }) => setMovies(data.recommendations))
       .catch((error) => console.error(error));
   }, []);
+
+  const handleChangeMovie = (isAccepted: boolean) => {
+    setCurrentIndex(currentIndex + 1);
+    if (isAccepted) {
+      notify(true);
+      console.log('wyslano do bazy danych');
+    } else {
+      notify(false);
+      console.log('wyslano do bazy danych');
+    }
+  };
 
   return (
     <MainTemplate>
@@ -44,8 +70,8 @@ const Movie = () => {
         <Heading>Select your favourite</Heading>
         {movies.length > 0 && <MovieCard movie={movies[currentIndex]} />}
         <ButtonWrapper>
-          <Button onClick={notify} />
-          <Button isDecline />
+          <Button onClick={() => handleChangeMovie(true)} />
+          <Button isDecline onClick={() => handleChangeMovie(false)} />
         </ButtonWrapper>
       </Wrapper>
     </MainTemplate>
