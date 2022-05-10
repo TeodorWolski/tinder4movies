@@ -6,10 +6,21 @@ import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
+import { MovieProps } from 'types';
+
+interface Movie {
+  id: string;
+  name: string;
+  rating: number;
+  description: string;
+  image: string;
+  url: string;
+}
 
 const Movie = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<Movie[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const currentMovie = movies[currentIndex];
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
@@ -49,7 +60,7 @@ const Movie = () => {
       console.log('wyslano do bazy danych');
     } else {
       notify(false);
-      console.log('wyslano do bazy danych');
+      axios.put(`/recommendations/${currentMovie.id}/reject`, currentMovie);
     }
   };
 
@@ -67,8 +78,8 @@ const Movie = () => {
           draggable
           pauseOnHover
         />
-        <Heading>Select your favourite</Heading>
-        {movies.length > 0 && <MovieCard movie={movies[currentIndex]} />}
+        <Heading>Czy lubisz ten</Heading>
+        {movies.length > 0 && <MovieCard movie={currentMovie} />}
         <ButtonWrapper>
           <Button onClick={() => handleChangeMovie(true)} />
           <Button isDecline onClick={() => handleChangeMovie(false)} />

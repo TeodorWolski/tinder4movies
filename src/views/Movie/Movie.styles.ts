@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 
 export const Heading = styled.h1`
   &::after {
-    content: ' movie!';
+    content: ' film?';
     color: ${({ theme }) => theme.colors.red};
   }
 `;
