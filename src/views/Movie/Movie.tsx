@@ -1,39 +1,50 @@
 import { useEffect, useState } from 'react';
 import { Wrapper, Heading, ButtonWrapper } from './Movie.styles';
-import { useParams } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
 
 const Movie = () => {
-  const { id } = useParams();
-  const [movie, setMovie] = useState([]);
-
+  const [movies, setMovies] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const notify = () =>
+    toast.error('🦄 Wow so easy!', {
+      position: 'bottom-left',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   useEffect(() => {
     axios
-      .get(`/recommendations/${id}`)
-      .then(({ data }) => setMovie(data.matchingRecommendation))
+      .get(`/recommendations`)
+      .then(({ data }) => setMovies(data.recommendations))
       .catch((error) => console.error(error));
-  }, [id]);
+  }, []);
 
   return (
     <MainTemplate>
       <Wrapper>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         <Heading>Select your favourite</Heading>
-        {movie.map(({ id, rating, name, image, url, description }) => (
-          <MovieCard
-            key={id}
-            rating={rating}
-            name={name}
-            image={image}
-            description={description}
-            url={url}
-            id={id}
-          />
-        ))}
+        {movies.length > 0 && <MovieCard movie={movies[currentIndex]} />}
         <ButtonWrapper>
-          <Button />
+          <Button onClick={notify} />
           <Button isDecline />
         </ButtonWrapper>
       </Wrapper>

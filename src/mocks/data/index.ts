@@ -1,8 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-
 export const recommendations = [
   {
-    id: '12345',
+    id: 'asd12324342casd1',
     name: 'Gran torino',
     rating: 8.2,
     description:
@@ -11,7 +9,7 @@ export const recommendations = [
     image: 'https://fwcdn.pl/fpo/65/80/476580/7239651.3.jpg',
   },
   {
-    id: uuidv4(),
+    id: '2i901i3kemascljkn',
     name: 'Chłopcy z ferajny',
     rating: 8.3,
     description:
@@ -21,7 +19,7 @@ export const recommendations = [
     url: 'https://www.filmweb.pl/film/Chłopcy+z+ferajny-1990-1033',
   },
   {
-    id: uuidv4(),
+    id: '3p3ij4ri023k0sp',
     name: 'Chłopaki nie płaczą',
     rating: 7.8,
     description:
@@ -30,7 +28,7 @@ export const recommendations = [
     image: 'https://fwcdn.pl/fpo/08/43/843/6901032.3.jpg',
   },
   {
-    id: uuidv4(),
+    id: '409345ijp9k1e09k',
     name: 'Kasyno',
     rating: 8.1,
     description:
@@ -39,7 +37,7 @@ export const recommendations = [
     url: 'https://www.filmweb.pl/film/Kasyno-1995-1029',
   },
   {
-    id: uuidv4(),
+    id: 'miwqp0913k2rk',
     name: 'Donnie Brasco',
     rating: 7.8,
     description:
@@ -48,7 +46,7 @@ export const recommendations = [
     url: 'https://www.filmweb.pl/film/Donnie+Brasco-1997-516',
   },
   {
-    id: uuidv4(),
+    id: '239ir0123oeldk',
     name: 'Ojciec chrzestny',
     rating: 8.6,
     description:
@@ -57,7 +55,7 @@ export const recommendations = [
     url: 'https://www.filmweb.pl/film/Ojciec+chrzestny-1972-1089',
   },
   {
-    id: uuidv4(),
+    id: 'i21390ekrqwed132m',
     name: 'Kiler',
     rating: 7.7,
     description:
