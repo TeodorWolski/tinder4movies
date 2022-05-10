@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import { Wrapper } from './MainTemplate.styles';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'assets/styles/theme';
 import GlobalStyle from 'assets/styles/GlobalStyle';
@@ -9,7 +9,9 @@ const MainTemplate: React.FC<{ children: React.ReactNode }> = ({
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Wrapper>{children}</Wrapper>
+      </ThemeProvider>
     </>
   );
 };

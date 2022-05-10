@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Wrapper, Heading, ButtonWrapper } from './Movie.styles';
+import { Heading, ButtonWrapper } from './Movie.styles';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
-import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
+
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
+import { useNavigate } from 'react-router-dom';
 
 interface Movie {
   id: string;
@@ -17,9 +18,13 @@ interface Movie {
 }
 
 const Movie = () => {
+  const navigate = useNavigate();
   const [movies, setMovies] = useState<Movie[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentMovie = movies[currentIndex];
+  {
+    console.log(movies.length);
+  }
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
@@ -64,27 +69,25 @@ const Movie = () => {
   };
 
   return (
-    <MainTemplate>
-      <Wrapper>
-        <ToastContainer
-          position="bottom-left"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
-        <Heading>Czy lubisz ten</Heading>
-        {movies.length > 0 && <MovieCard movie={currentMovie} />}
-        <ButtonWrapper>
-          <Button onClick={() => handleChangeMovie(true)} />
-          <Button isDecline onClick={() => handleChangeMovie(false)} />
-        </ButtonWrapper>
-      </Wrapper>
-    </MainTemplate>
+    <>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+      <Heading>Czy lubisz ten</Heading>
+      {movies.length > 0 && <MovieCard movie={currentMovie} />}
+      <ButtonWrapper>
+        <Button onClick={() => handleChangeMovie(true)} />
+        <Button isDecline onClick={() => handleChangeMovie(false)} />
+      </ButtonWrapper>
+    </>
   );
 };
 
