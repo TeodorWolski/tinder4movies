@@ -14,7 +14,16 @@ const mockMovie = {
 
 describe('MovieCard', () => {
   it('checks if MovieCard is displaying props value', () => {
-    renderWithThemeProvider(<MovieCard movie={mockMovie} />);
+    renderWithThemeProvider(
+      <MovieCard
+        id={mockMovie.id}
+        name={mockMovie.name}
+        description={mockMovie.description}
+        image={mockMovie.image}
+        url={mockMovie.url}
+        rating={mockMovie.rating}
+      />
+    );
     screen.getByText(/Gran torino/);
     screen.getByText(/8.2/);
   });
