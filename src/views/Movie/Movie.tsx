@@ -13,6 +13,7 @@ const Movie = () => {
   const [movies, setMovies] = useState<Recommendation[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentMovie = movies[currentIndex];
+  const { id, name, description, url, image, rating } = currentMovie;
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
@@ -71,7 +72,16 @@ const Movie = () => {
         pauseOnHover
       />
       <Heading>Czy lubisz ten</Heading>
-      {movies.length > 0 && <MovieCard movie={currentMovie} />}
+      {movies.length > 0 && (
+        <MovieCard
+          id={id}
+          name={name}
+          description={description}
+          image={image}
+          url={url}
+          rating={rating}
+        />
+      )}
       <ButtonWrapper>
         <Button onClick={() => handleChangeMovie(true)} />
         <Button isDecline onClick={() => handleChangeMovie(false)} />

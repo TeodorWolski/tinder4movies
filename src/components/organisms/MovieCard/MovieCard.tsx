@@ -6,37 +6,34 @@ import {
 } from './MovieCard.styles';
 import StarIcon from 'assets/images/StarIcon.svg';
 import FilmwebIcon from 'assets/images/FilmwebIcon.png';
+import { Recommendation } from 'types';
 
-interface MovieProps {
-  movie: {
-    id: string;
-    name: string;
-    rating: number;
-    description: string;
-    image: string;
-    url: string;
-  };
-}
-
-const MovieCard: React.FC<MovieProps> = ({ movie }) => {
+const MovieCard: React.FC<Recommendation> = ({
+  id,
+  name,
+  rating,
+  description,
+  url,
+  image,
+}) => {
   return (
-    <CardWrapper key={movie.id}>
+    <CardWrapper key={id}>
       <RatingSection>
         <img src={StarIcon} alt="starIcon" />
-        <p>{movie.rating}</p>
+        <p>{rating}</p>
       </RatingSection>
-      <img src={movie.image} alt="movie" />
+      <img src={image} alt="movie" />
       <MovieInfo>
         <div>
-          <h1>{movie.name}</h1>
+          <h1>{name}</h1>
           <FilmwebLink
             icon={FilmwebIcon}
-            href={movie.url}
+            href={url}
             target="_blank"
             rel="noopener norefferer"
           />
         </div>
-        <p>{movie.description}</p>
+        <p>{description}</p>
       </MovieInfo>
     </CardWrapper>
   );
