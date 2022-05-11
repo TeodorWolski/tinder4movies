@@ -1,8 +1,9 @@
 import { rest } from 'msw';
 import { recommendations } from 'mocks/data';
+import { Recommendation } from 'types';
 
 export const handlers = [
-  rest.get('/recommendations', (req, res, ctx) => {
+  rest.get<Recommendation[]>('/recommendations', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ recommendations }));
   }),
 

@@ -6,15 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import Button from 'components/atoms/Button/Button';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
-
-interface Recommendation {
-  id: string;
-  name: string;
-  rating: number;
-  description: string;
-  image: string;
-  url: string;
-}
+import { Recommendation } from 'types';
 
 const Movie = () => {
   const navigate = useNavigate();
