@@ -6,7 +6,17 @@ import {
 } from './MovieCard.styles';
 import StarIcon from 'assets/images/StarIcon.svg';
 import FilmwebIcon from 'assets/images/FilmwebIcon.png';
-import { MovieProps } from 'types';
+
+interface MovieProps {
+  movie: {
+    id: string;
+    name: string;
+    rating: number;
+    description: string;
+    image: string;
+    url: string;
+  };
+}
 
 const MovieCard: React.FC<MovieProps> = ({ movie }) => {
   return (
