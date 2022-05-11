@@ -5,6 +5,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  a {
+    font-size: ${({ theme }) => theme.fontSize.l};
+    padding: 1.5rem;
+    color: black;
+  }
 `;
 
 export const Heading = styled.h1`
