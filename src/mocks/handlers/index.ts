@@ -7,7 +7,7 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ recommendations }));
   }),
 
-  rest.put<{ id: string }>('/recommendations/:id/reject', (req, res, ctx) => {
+  rest.put<Recommendation>('/recommendations/:id/reject', (req, res, ctx) => {
     if (req.params.id) {
       const rejectedRecommendation = recommendations.filter(
         (recommendation) => recommendation.id === req.params.id
@@ -16,7 +16,7 @@ export const handlers = [
     }
   }),
 
-  rest.put<{ id: string }>('/recommendations/:id/accept', (req, res, ctx) => {
+  rest.put<Recommendation>('/recommendations/:id/accept', (req, res, ctx) => {
     if (req.params.id) {
       const acceptedRecommendation = recommendations.filter(
         (recommendation) => recommendation.id === req.params.id
