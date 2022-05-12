@@ -16,7 +16,7 @@ interface CtxInterface {
 
 const Movie = () => {
   const { currentMovie, downloadedMovies, acceptMovie, rejectMovie } =
-    useContext(MovieContext);
+    useContext<CtxInterface>(MovieContext);
 
   return (
     <>

@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import MovieProvider from 'providers/MovieProvider';
 import { newRender } from 'helpers/newRender';
 import { setupServer } from 'msw/node';
 import { handlers } from 'mocks/handlers';
@@ -12,7 +13,11 @@ describe('Movie', () => {
   afterAll(() => server.close());
 
   it('renders the component', async () => {
-    newRender(<Movie />);
+    newRender(
+      <MovieProvider>
+        <Movie />
+      </MovieProvider>
+    );
   });
 
   // it('Checks if the movies are loaded', () => {
