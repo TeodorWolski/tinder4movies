@@ -5,13 +5,6 @@ import { toast } from 'react-toastify';
 import { Recommendation } from 'types';
 import axios from 'axios';
 
-interface CtxInterface {
-  currentMovie: Recommendation;
-  downloadedMovies: Recommendation[];
-  acceptMovie: () => void;
-  rejectMovie: () => void;
-}
-
 export const MovieContext = createContext<any>({});
 
 const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
