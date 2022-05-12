@@ -5,18 +5,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'components/atoms/Button/Button';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
-import { Recommendation } from 'types';
-
-interface CtxInterface {
-  currentMovie: Recommendation;
-  downloadedMovies: Recommendation[];
-  acceptMovie: () => void;
-  rejectMovie: () => void;
-}
+import { MovieCtx } from 'types';
 
 const Movie = () => {
   const { currentMovie, downloadedMovies, acceptMovie, rejectMovie } =
-    useContext<CtxInterface>(MovieContext);
+    useContext<MovieCtx>(MovieContext);
 
   return (
     <Wrapper>

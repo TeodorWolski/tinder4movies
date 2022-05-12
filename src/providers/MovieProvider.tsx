@@ -4,8 +4,25 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Recommendation } from 'types';
 import axios from 'axios';
+import { MovieCtx } from 'types';
 
-export const MovieContext = createContext<any>({});
+export const MovieContext = createContext<MovieCtx>({
+  acceptMovie: () => {
+    console.log('acceptMovie');
+  },
+  rejectMovie: () => {
+    console.log('rejectMovie');
+  },
+  downloadedMovies: [],
+  currentMovie: {
+    name: '',
+    id: '',
+    description: '',
+    rating: 0,
+    url: '',
+    image: '',
+  },
+});
 
 const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   children,

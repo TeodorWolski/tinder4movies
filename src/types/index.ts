@@ -6,3 +6,10 @@ export interface Recommendation {
   image: string;
   url: string;
 }
+
+export interface MovieCtx {
+  acceptMovie: () => void;
+  rejectMovie: () => void;
+  downloadedMovies: Recommendation[] | [];
+  currentMovie: Recommendation;
+}
