@@ -1,9 +1,11 @@
-import { Heading, Button, Wrapper } from './End.styles';
+import { Heading, Button, Wrapper, Link } from './End.styles';
 const End = () => {
   return (
     <Wrapper>
       <Heading>Wszystkie filmy zostały przejrzane!</Heading>
-      <a href="https://github.com/TeodorWolski/tinder4movies">kod źródłowy</a>
+      <Link href="https://github.com/TeodorWolski/tinder4movies">
+        kod źródłowy
+      </Link>
       <Button as="a" href="/">
         Wróć na początek
       </Button>

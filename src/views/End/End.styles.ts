@@ -5,12 +5,12 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+`;
 
-  a {
-    font-size: ${({ theme }) => theme.fontSize.l};
-    padding: 1.5rem;
-    color: black;
-  }
+export const Link = styled.a`
+  font-size: ${({ theme }) => theme.fontSize.l};
+  padding: 1.5rem;
+  color: black;
 `;
 
 export const Heading = styled.h1`
@@ -27,5 +27,9 @@ export const Button = styled.button`
   border-radius: 20rem;
   color: white;
   box-shadow: -2px 4px 10px rgba(115, 124, 142, 0.09);
-  text-decoraton: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: ${({ theme }) => theme.fontSize.m};
 `;
