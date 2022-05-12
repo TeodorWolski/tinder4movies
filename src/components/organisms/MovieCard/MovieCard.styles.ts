@@ -17,6 +17,11 @@ export const CardWrapper = styled.div`
     width: 100%;
     height: 100%;
   }
+
+  @media (min-width: 700px) {
+    height: 55rem;
+    width: 35rem;
+  }
 `;
 
 export const RatingSection = styled.div`

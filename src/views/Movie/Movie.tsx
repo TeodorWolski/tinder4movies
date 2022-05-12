@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { MovieContext } from 'providers/MovieProvider';
-import { Heading, ButtonWrapper } from './Movie.styles';
+import { Heading, ButtonWrapper, Wrapper } from './Movie.styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'components/atoms/Button/Button';
@@ -19,7 +19,7 @@ const Movie = () => {
     useContext<CtxInterface>(MovieContext);
 
   return (
-    <>
+    <Wrapper>
       <ToastContainer
         position="bottom-left"
         autoClose={5000}
@@ -46,7 +46,7 @@ const Movie = () => {
         <Button onClick={acceptMovie} />
         <Button isDecline onClick={rejectMovie} />
       </ButtonWrapper>
-    </>
+    </Wrapper>
   );
 };
 
