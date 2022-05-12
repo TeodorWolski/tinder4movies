@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { MovieContext } from 'providers/MovieProvider';
 import { Heading, ButtonWrapper } from './Movie.styles';
 import { ToastContainer } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'components/atoms/Button/Button';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
@@ -17,7 +16,7 @@ interface CtxInterface {
 
 const Movie = () => {
   const { currentMovie, downloadedMovies, acceptMovie, rejectMovie } =
-    useContext<any>(MovieContext);
+    useContext(MovieContext);
 
   return (
     <>

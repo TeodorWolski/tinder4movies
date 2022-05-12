@@ -11,7 +11,7 @@ describe('Movie', () => {
   afterEach(() => server.resetHandlers());
   afterAll(() => server.close());
 
-  it('renders the component', () => {
+  it('renders the component', async () => {
     newRender(<Movie />);
   });
 

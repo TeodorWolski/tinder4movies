@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useEffect, useState, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -11,7 +12,7 @@ interface CtxInterface {
   rejectMovie: () => void;
 }
 
-export const MovieContext = createContext<CtxInterface | null>(null);
+export const MovieContext = createContext<any>({});
 
 const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
