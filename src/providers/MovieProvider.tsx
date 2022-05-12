@@ -1,10 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Recommendation } from 'types';
 import axios from 'axios';
 
-export const useMovie = () => {
+interface CtxInterface {
+  currentMovie: Recommendation;
+  downloadedMovies: Recommendation[];
+  acceptMovie: () => void;
+  rejectMovie: () => void;
+}
+
+export const MovieContext = createContext<CtxInterface | null>(null);
+
+const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [downloadedMovies, setDownloadedMovies] = useState<Recommendation[]>(
     []
   );
@@ -57,10 +68,18 @@ export const useMovie = () => {
     currentIndex === 6 && navigate('/end');
   };
 
-  return {
-    downloadedMovies,
-    currentMovie,
-    rejectMovie,
-    acceptMovie,
-  };
+  return (
+    <MovieContext.Provider
+      value={{
+        acceptMovie,
+        rejectMovie,
+        downloadedMovies,
+        currentMovie,
+      }}
+    >
+      {children}
+    </MovieContext.Provider>
+  );
 };
+
+export default MovieProvider;

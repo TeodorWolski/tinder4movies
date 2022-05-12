@@ -1,13 +1,23 @@
+import { useContext } from 'react';
+import { MovieContext } from 'providers/MovieProvider';
 import { Heading, ButtonWrapper } from './Movie.styles';
 import { ToastContainer } from 'react-toastify';
+import MovieProvider from 'providers/MovieProvider';
 import 'react-toastify/dist/ReactToastify.css';
 import Button from 'components/atoms/Button/Button';
 import MovieCard from 'components/organisms/MovieCard/MovieCard';
-import { useMovie } from 'hooks/useMovie';
+import { Recommendation } from 'types';
+
+interface CtxInterface {
+  currentMovie: Recommendation;
+  downloadedMovies: Recommendation[];
+  acceptMovie: () => void;
+  rejectMovie: () => void;
+}
 
 const Movie = () => {
-  const { downloadedMovies, currentMovie, rejectMovie, acceptMovie } =
-    useMovie();
+  const { currentMovie, downloadedMovies, acceptMovie, rejectMovie } =
+    useContext<any>(MovieContext);
 
   return (
     <>
