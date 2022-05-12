@@ -1,5 +1,5 @@
 import { screen } from '@testing-library/react';
-import { renderWithThemeProvider } from 'helpers/renderWithThemeProvider';
+import { newRender } from 'helpers/newRender';
 import MovieCard from './MovieCard';
 
 const mockMovie = {
@@ -14,7 +14,7 @@ const mockMovie = {
 
 describe('MovieCard', () => {
   it('checks if MovieCard is displaying props value', () => {
-    renderWithThemeProvider(
+    newRender(
       <MovieCard
         id={mockMovie.id}
         name={mockMovie.name}
