@@ -1,8 +1,7 @@
+import { screen } from '@testing-library/react';
 import { newRender } from 'helpers/newRender';
-import { useState } from 'react';
 import { setupServer } from 'msw/node';
 import { handlers } from 'mocks/handlers';
-import { fireEvent, screen } from '@testing-library/react';
 import Movie from './Movie';
 
 const server = setupServer(...handlers);
@@ -15,4 +14,8 @@ describe('Movie', () => {
   it('renders the component', () => {
     newRender(<Movie />);
   });
+
+  // it('Checks if the movies are loaded', () => {
+  //   expect(screen.getByText('gran torino')).toBeInTheDocument();
+  // });
 });
