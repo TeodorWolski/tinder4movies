@@ -51,18 +51,6 @@
       "prettier --write"
     ]
   },
-  "jest": {
-    "globalSetup": "./dist/tests/jest-config.js",
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "json"
-    ],
-    "testMatch": [
-      "**/dist/**/*.test.js"
-    ],
-    "testEnvironment": "node"
-  },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@types/styled-components": "^5.1.25",

@@ -1,3 +1,5 @@
+import '@testing-library/jest-dom/extend-expect';
+import { screen, fireEvent } from '@testing-library/react';
 import { rest } from 'msw';
 import MovieProvider from 'providers/MovieProvider';
 import { newRender } from 'helpers/newRender';
@@ -32,7 +34,7 @@ describe('Movie', () => {
     newRender(<App />);
   });
 
-  it('Checks if reject put request works', async () => {
+  it('Checks if reject put request', async () => {
     newRender(<App />);
     server.use(
       rest.put('/recommendation/:id/reject', (req, res, ctx) => {
