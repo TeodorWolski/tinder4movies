@@ -36,8 +36,8 @@ const Movie = () => {
         />
       )}
       <ButtonWrapper>
-        <Button onClick={acceptMovie} />
-        <Button isDecline onClick={rejectMovie} />
+        <Button data-testid="accept-movie" onClick={acceptMovie} />
+        <Button data-testid="reject-movie" isDecline onClick={rejectMovie} />
       </ButtonWrapper>
     </Wrapper>
   );
