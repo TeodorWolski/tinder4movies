@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { screen, fireEvent, queryByRole } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { recommendations } from 'mocks/data';
 import { rest } from 'msw';
 import MovieProvider from 'providers/MovieProvider';
@@ -48,6 +48,8 @@ describe('Movie', () => {
       })
     );
     newRender(<App />);
+    const button = screen.queryByTestId('reject-movie');
+    expect(button).toBeInTheDocument();
   });
 
   it('Checks if accept put request works', async () => {
@@ -57,5 +59,7 @@ describe('Movie', () => {
       })
     );
     newRender(<App />);
+    const button = screen.queryByTestId('accept-movie');
+    expect(button).toBeInTheDocument();
   });
 });
