@@ -10,9 +10,9 @@ const Root = () => {
       <BrowserRouter>
         <MovieProvider>
           <Routes>
-            <Route path="/" element={<Navigate to="/tinder4movies/" />} />
+            <Route path="/" element={<Navigate to="/tinder4movies" />} />
             <Route path="/tinder4movies" element={<Movie />} />
-            <Route path="/tinder4movies/end" element={<End />} />
+            <Route path="/end" element={<End />} />
           </Routes>
         </MovieProvider>
       </BrowserRouter>

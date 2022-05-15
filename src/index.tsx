@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import Root from 'views/Root/Root';
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
 if (process.env.NODE_ENV === 'development') {
