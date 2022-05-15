@@ -69,14 +69,14 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
     setCurrentIndex(currentIndex + 1);
     notify(false);
     axios.put(`/recommendations/${currentMovie.id}/reject`, currentMovie);
-    currentIndex === 6 && navigate('/end');
+    currentIndex === 6 && navigate('/tinder4movies/end');
   };
 
   const acceptMovie = () => {
     setCurrentIndex(currentIndex + 1);
     notify(true);
     axios.put(`/recommendations/${currentMovie.id}/accept`, currentMovie);
-    currentIndex === 6 && navigate('/end');
+    currentIndex === 6 && navigate('/tinder4movies/end');
   };
 
   return (

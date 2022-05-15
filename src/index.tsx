@@ -7,10 +7,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-root.render(
-  <React.StrictMode>
-    <Root />
-  </React.StrictMode>
-);
-
-worker.start();
+worker.start().then(() => {
+  root.render(
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>
+  );
+});
