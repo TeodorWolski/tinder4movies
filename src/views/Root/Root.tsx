@@ -1,5 +1,5 @@
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MovieProvider from 'providers/MovieProvider';
 import Movie from 'views/Movie/Movie';
 import End from 'views/End/End';
