@@ -59,9 +59,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     axios
-      .get<{ recommendations: Recommendation[] }>(
-        `/tinder4movies/recommendations`
-      )
+      .get<{ recommendations: Recommendation[] }>(`/recommendations`)
       .then(({ data }) => setDownloadedMovies(data.recommendations))
       .catch((error) => console.error(error));
   }, []);
