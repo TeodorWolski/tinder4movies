@@ -1,16 +1,16 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Root from 'views/Root/Root';
-import { worker } from 'mocks/browser';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root')!);
 
-worker.start().then(() => {
-  root.render(
-    <React.StrictMode>
-      <Root />
-    </React.StrictMode>
-  );
-});
+if (process.env.NODE_ENV === 'development') {
+  import('mocks/browser')
+    .then(({ worker }) => {
+      worker.start();
+    })
+    .then(() => {
+      root.render(<Root />);
+    });
+} else {
+  root.render(<Root />);
+}
