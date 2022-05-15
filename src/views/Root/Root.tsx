@@ -7,7 +7,7 @@ import End from 'views/End/End';
 const Root = () => {
   return (
     <MainTemplate>
-      <BrowserRouter>
+      <BrowserRouter basename="/tinder4movies">
         <MovieProvider>
           <Routes>
             <Route path="/" element={<Movie />} />
