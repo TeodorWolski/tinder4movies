@@ -6,7 +6,7 @@ const End = () => {
       <Link href="https://github.com/TeodorWolski/tinder4movies">
         kod źródłowy
       </Link>
-      <Button as="a" href="/tinder4movies/">
+      <Button as="a" href="/">
         Wróć na początek
       </Button>
     </Wrapper>
