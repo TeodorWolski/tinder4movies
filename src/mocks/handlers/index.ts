@@ -7,7 +7,7 @@ export const handlers = [
     DefaultRequestBody,
     PathParams,
     { recommendations: Recommendation[] }
-  >('/recommendations', (req, res, ctx) => {
+  >('/tinder4movies/recommendations', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json({ recommendations }));
   }),
 
