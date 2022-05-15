@@ -71,7 +71,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
       `/recommendations/${currentMovie.id}/reject`,
       currentMovie
     );
-    currentIndex === 6 && navigate('/tinder4movies/end');
+    currentIndex === 6 && navigate('/end');
   };
 
   const acceptMovie = () => {
@@ -81,7 +81,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
       `/recommendations/${currentMovie.id}/accept`,
       currentMovie
     );
-    currentIndex === 6 && navigate('/tinder4movies/end');
+    currentIndex === 6 && navigate('/end');
   };
 
   return (
