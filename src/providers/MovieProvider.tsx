@@ -35,7 +35,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
-      toast.success(`Już wiemy, że lubisz film ${currentMovie.name}`, {
+      toast.success(`Już wiemy, że lubisz ten film`, {
         position: 'top-center',
         autoClose: 5000,
         hideProgressBar: false,

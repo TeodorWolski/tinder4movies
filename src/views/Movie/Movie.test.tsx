@@ -1,7 +1,8 @@
 import '@testing-library/jest-dom/extend-expect';
 import { screen } from '@testing-library/react';
 import { recommendations } from 'mocks/data';
-import { rest } from 'msw';
+import { Recommendation } from 'types';
+import { rest, PathParams, DefaultRequestBody } from 'msw';
 import { newRender } from 'helpers/newRender';
 import { setupServer } from 'msw/node';
 import { handlers } from 'mocks/handlers';
@@ -30,7 +31,11 @@ describe('Movie', () => {
   it('downloads the data from recommendations and renders app', async () => {
     newRender(<App />);
     server.use(
-      rest.get('/recommendations', (req, res, ctx) => {
+      rest.get<
+        DefaultRequestBody,
+        PathParams,
+        { recommendations: Recommendation[] }
+      >('/recommendations', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json({ recommendations }));
       })
     );
@@ -39,9 +44,12 @@ describe('Movie', () => {
 
   it('Checks if reject put request works', async () => {
     server.use(
-      rest.put('/recommendation/:id/reject', (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json({ mockMovie }));
-      })
+      rest.put<DefaultRequestBody, PathParams, { mockMovie: Recommendation }>(
+        '/recommendation/:id/reject',
+        (req, res, ctx) => {
+          return res(ctx.status(200), ctx.json({ mockMovie }));
+        }
+      )
     );
     newRender(<App />);
     const button = screen.queryByTestId('reject-movie');
@@ -50,9 +58,12 @@ describe('Movie', () => {
 
   it('Checks if accept put request works', async () => {
     server.use(
-      rest.put('/recommendation/:id/accept', (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json({ mockMovie }));
-      })
+      rest.put<DefaultRequestBody, PathParams, { mockMovie: Recommendation }>(
+        '/recommendation/:id/accept',
+        (req, res, ctx) => {
+          return res(ctx.status(200), ctx.json({ mockMovie }));
+        }
+      )
     );
     newRender(<App />);
     const button = screen.queryByTestId('accept-movie');
