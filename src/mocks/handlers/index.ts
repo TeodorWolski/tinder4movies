@@ -1,4 +1,4 @@
-import { rest, DefaultRequestBody } from 'msw';
+import { rest } from 'msw';
 import { recommendations } from 'mocks/data';
 import { Recommendation } from 'types';
 
@@ -7,19 +7,19 @@ export const handlers = [
     return res(ctx.status(200), ctx.json({ recommendations }));
   }),
 
-  rest.put<Recommendation>('/recommendations/:id/reject', (req, res, ctx) => {
+  rest.put('/recommendations/:id/reject', (req, res, ctx) => {
     if (req.params.id) {
       const rejectedRecommendation = recommendations.filter(
-        (recommendation) => recommendation.id === req.params.id
+        (recommendation: Recommendation) => recommendation.id === req.params.id
       );
       return res(ctx.status(200), ctx.json({ rejectedRecommendation }));
     }
   }),
 
-  rest.put<Recommendation>('/recommendations/:id/accept', (req, res, ctx) => {
+  rest.put('/recommendations/:id/accept', (req, res, ctx) => {
     if (req.params.id) {
       const acceptedRecommendation = recommendations.filter(
-        (recommendation) => recommendation.id === req.params.id
+        (recommendation: Recommendation) => recommendation.id === req.params.id
       );
       return res(ctx.status(200), ctx.json({ acceptedRecommendation }));
     }

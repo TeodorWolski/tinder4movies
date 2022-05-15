@@ -1,11 +1,11 @@
 import '@testing-library/jest-dom/extend-expect';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import { recommendations } from 'mocks/data';
 import { rest } from 'msw';
-import MovieProvider from 'providers/MovieProvider';
 import { newRender } from 'helpers/newRender';
 import { setupServer } from 'msw/node';
 import { handlers } from 'mocks/handlers';
+import MovieProvider from 'providers/MovieProvider';
 import Movie from './Movie';
 
 const mockMovie = {
@@ -27,10 +27,6 @@ const App = () => (
 );
 
 describe('Movie', () => {
-  beforeAll(() => server.listen());
-  afterEach(() => server.resetHandlers());
-  afterAll(() => server.close());
-
   it('downloads the data from recommendations and renders app', async () => {
     newRender(<App />);
     server.use(
@@ -62,4 +58,8 @@ describe('Movie', () => {
     const button = screen.queryByTestId('accept-movie');
     expect(button).toBeInTheDocument();
   });
+
+  beforeAll(() => server.listen());
+  afterEach(() => server.resetHandlers());
+  afterAll(() => server.close());
 });

@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-empty-function */
 import { useEffect, useState, createContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { Recommendation } from 'types';
-import axios from 'axios';
 import { MovieCtx } from 'types';
+import axios from 'axios';
 
 export const MovieContext = createContext<MovieCtx>({
   acceptMovie: () => {
@@ -30,7 +29,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   const [downloadedMovies, setDownloadedMovies] = useState<Recommendation[]>(
     []
   );
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const currentMovie = downloadedMovies[currentIndex];
   const navigate = useNavigate();
 
@@ -60,7 +59,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     axios
-      .get(`/recommendations`)
+      .get<{ recommendations: Recommendation[] }>(`/recommendations`)
       .then(({ data }) => setDownloadedMovies(data.recommendations))
       .catch((error) => console.error(error));
   }, []);
@@ -68,14 +67,20 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   const rejectMovie = () => {
     setCurrentIndex(currentIndex + 1);
     notify(false);
-    axios.put(`/recommendations/${currentMovie.id}/reject`, currentMovie);
+    axios.put<Recommendation>(
+      `/recommendations/${currentMovie.id}/reject`,
+      currentMovie
+    );
     currentIndex === 6 && navigate('/tinder4movies/end');
   };
 
   const acceptMovie = () => {
     setCurrentIndex(currentIndex + 1);
     notify(true);
-    axios.put(`/recommendations/${currentMovie.id}/accept`, currentMovie);
+    axios.put<Recommendation>(
+      `/recommendations/${currentMovie.id}/accept`,
+      currentMovie
+    );
     currentIndex === 6 && navigate('/tinder4movies/end');
   };
 
