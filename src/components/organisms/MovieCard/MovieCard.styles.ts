@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled.div<{ swipedPosition: number }>`
   position: relative;
+  transition: 0.3s ease-in-out;
+  left: ${({ swipedPosition }) => `${swipedPosition}vw`};
   margin-top: 4rem;
   height: 45rem;
   background-color: white;

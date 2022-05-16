@@ -7,6 +7,9 @@ import {
 import StarIcon from 'assets/images/StarIcon.svg';
 import FilmwebIcon from 'assets/images/FilmwebIcon.png';
 import { Recommendation } from 'types';
+import { useContext } from 'react';
+import { MovieContext } from 'providers/MovieProvider';
+import { MovieCtx } from 'types';
 
 const MovieCard: React.FC<Recommendation> = ({
   id,
@@ -16,8 +19,10 @@ const MovieCard: React.FC<Recommendation> = ({
   url,
   image,
 }) => {
+  const { swipe, handleTouchEnd } = useContext<MovieCtx>(MovieContext);
+
   return (
-    <CardWrapper key={id}>
+    <CardWrapper swipedPosition={swipe} key={id} onTouchEnd={handleTouchEnd}>
       <RatingSection>
         <img src={StarIcon} alt="starIcon" />
         <p>{rating}</p>

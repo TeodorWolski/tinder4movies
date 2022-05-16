@@ -20,7 +20,12 @@ export const MovieContext = createContext<MovieCtx>({
     rating: 0,
     url: '',
     image: '',
+    swipe: 0,
   },
+  handleTouchEnd: () => {
+    console.log('handleTouchEnd');
+  },
+  swipe: 0,
 });
 
 const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -32,6 +37,7 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const currentMovie = downloadedMovies[currentIndex];
   const navigate = useNavigate();
+  const [swipe, setSwipe] = useState(0);
 
   const notify = (isAccepted?: boolean) => {
     if (isAccepted) {
@@ -84,6 +90,13 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
     currentIndex === 6 && navigate('/end');
   };
 
+  const handleTouchEnd = () => {
+    setSwipe(-150);
+    setCurrentIndex(currentIndex + 1);
+    setSwipe(0);
+    rejectMovie();
+  };
+
   return (
     <MovieContext.Provider
       value={{
@@ -91,6 +104,8 @@ const MovieProvider: React.FC<{ children: React.ReactNode }> = ({
         rejectMovie,
         downloadedMovies,
         currentMovie,
+        handleTouchEnd,
+        swipe,
       }}
     >
       {children}
